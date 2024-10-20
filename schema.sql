@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS Rules (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    rule_string TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS RuleMetadata (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    rule_id INT,
+    attribute VARCHAR(255),
+    condition VARCHAR(255),
+    value VARCHAR(255),
+    FOREIGN KEY (rule_id) REFERENCES Rules(id) ON DELETE CASCADE
+);
